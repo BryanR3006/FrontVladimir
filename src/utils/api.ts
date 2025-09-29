@@ -1,6 +1,6 @@
 import { storageManager } from './storage';
 
-const API_BASE_URL = import.meta.env.DEV ? '/api' : 'https://localhost:7117/api';
+const API_BASE_URL = `${import.meta.env.VITE_API_BASE_URL || 'https://lab05webapiml20250927204256-huekfzc5dmc4e8ef.eastus2-01.azurewebsites.net'}/api`;
 
 interface ApiConfig extends RequestInit {
   requiresAuth?: boolean;
