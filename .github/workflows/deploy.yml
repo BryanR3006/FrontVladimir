@@ -1,0 +1,32 @@
+# .github/workflows/deploy.yml
+name: Desplegar a GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # Dispara el flujo cuando se hace push a la rama principal
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del código 🛎️
+        uses: actions/checkout@v4
+      
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Puedes usar '18' o la versión que uses localmente
+          
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Compilar el proyecto con Vite
+        run: npm run build # Esto genera la carpeta 'dist'
+
+      - name: Desplegar la carpeta 'dist' a la rama 'gh-pages' 🚀
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist # La carpeta que Vite genera y queremos publicar
+          publish_branch: gh-pages # Despliega a esta nueva rama
