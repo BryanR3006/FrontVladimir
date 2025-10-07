@@ -6,7 +6,7 @@ export default defineConfig({
   // *** LÍNEA AGREGADA PARA GITHUB PAGES ***
   // Esto le dice a Vite que cargue los recursos (como main.tsx)
   // desde el subdirectorio /FrontVladimir/
-  base: "/FrontVladimir/", 
+  base: "./", 
   // ***************************************
   
   plugins: [react()],
